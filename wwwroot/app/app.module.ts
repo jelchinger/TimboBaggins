@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AgmCoreModule } from 'angular2-google-maps/core';
 import 'rxjs/Rx';
 import { UploadService } from './app.service';
 import { uploadService } from './upload.service';
@@ -40,7 +41,8 @@ import { AuthService } from "./auth.service";
         FormsModule,
         ReactiveFormsModule,
         RouterModule,
-        AppRouting 
+        AppRouting,
+        AgmCoreModule.forRoot()
     ],
     providers: [
         AuthService,

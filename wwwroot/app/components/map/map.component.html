@@ -1,10 +1,45 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <title>Map MotherTrucker</title>
-</head>
-<body>
-    <h1>hey</h1>
-</body>
+
+    <head>
+        <title>Display Google Maps API Version</title>
+    </head>
+
+    <body>
+    
+        <sebm-google-map [latitude]="lat"
+                         [longitude]="lng"
+                         [zoom]="zoom"
+                         [disableDefaultUI]="false"
+                         [zoomControl]="false"
+                         (mapClick)="mapClicked($event)">
+
+            <sebm-google-map-marker *ngFor="let m of markers; let i = index"
+                                    (markerClick)="clickedMarker(m.label, i)"
+                                    [latitude]="m.lat"
+                                    [longitude]="m.lng"
+                                    [label]="m.label"
+                                    [markerDraggable]="m.draggable"
+                                    (dragEnd)="markerDragEnd(m, $event)">
+
+                <sebm-google-map-info-window>
+                    <strong>InfoWindow content</strong>
+                </sebm-google-map-info-window>
+
+            </sebm-google-map-marker>
+
+            <sebm-google-map-circle [latitude]="lat + 0.3" [longitude]="lng"
+                                    [radius]="5000"
+                                    [fillColor]="'red'"
+                                    [circleDraggable]="true"
+                                    [editable]="true">
+            </sebm-google-map-circle>
+            
+        </sebm-google-map>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzaG9k03s3BFzc7kqpwKleK-8f-QtCUtk&callback=initMap"
+                type="text/javascript"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?AIzaSyCzaG9k03s3BFzc7kqpwKleK-8f-QtCUtk&callback=initMap"
+                type="text/javascript"></script>
+
+    </body>
 </html>

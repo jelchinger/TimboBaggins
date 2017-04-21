@@ -4,17 +4,76 @@
 <head>
   <base href="/">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-  <script src="//unpkg.com/core-js/client/shim.min.js"></script>
+  <!--<script src="//unpkg.com/core-js/client/shim.min.js"></script>
+  <script src="//unpkg.com/reflect-metadata@0.1.3/Reflect.js"></script>
   <script src="//unpkg.com/zone.js@0.6.21"></script>
   <script src="//unpkg.com/typescript@2.0.0"></script>
-  <script src="//unpkg.com/systemjs@0.19.37/dist/system.src.js"></script>
+  <script src="//unpkg.com/systemjs@0.19.37/dist/system.src.js"></script> -->
+  
+  <script src="//unpkg.com/zone.js@0.6.21/dist/zone.js"></script>
+  <script src="//unpkg.com/reflect-metadata@0.1.3/Reflect.js"></script>
+  <script src="//unpkg.com/systemjs@0.19.31/dist/system.js"></script>
+  <script src="//unpkg.com/typescript@1.8.10/lib/typescript.js"></script>
+  
+
   <script>
     System.config({
       transpiler: 'typescript',
       typescriptOptions: {
         emitDecoratorMetadata: true
       },
+      paths: {
+          'npm:': 'https://unpkg.com/'
+      },
+      //map tells the System loader where to look for things
       map: {
+
+          '@angular/core': 'npm:@angular/core@2.4.1/bundles/core.umd.js',
+          '@angular/common': 'npm:@angular/common@2.4.1/bundles/common.umd.js',
+          '@angular/compiler': 'npm:@angular/compiler@2.4.1/bundles/compiler.umd.js',
+          '@angular/platform-browser': 'npm:@angular/platform-browser@2.4.1/bundles/platform-browser.umd.js',
+          '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic@2.4.1/bundles/platform-browser-dynamic.umd.js',
+          '@angular/http': 'npm:@angular/http@2.4.1/bundles/http.umd.js',
+          '@angular/router': 'npm:@angular/router@3.0.0/bundles/router.umd.js',
+          '@angular/forms': 'npm:@angular/forms@2.4.1/bundles/forms.umd.js',
+
+          '@angular/core/testing': 'npm:@angular/core@2.4.1/bundles/core-testing.umd.js',
+          '@angular/common/testing': 'npm:@angular/common/bundles@2.4.1/common-testing.umd.js',
+          '@angular/compiler/testing': 'npm:@angular/compiler@2.4.1/bundles/compiler-testing.umd.js',
+          '@angular/platform-browser/testing': 'npm:@angular/platform-browser@2.4.1/bundles/platform-browser-testing.umd.js',
+          '@angular/platform-browser-dynamic/testing': 'npm:@angular/platform-browser-dynamic@2.4.1/bundles/platform-browser-dynamic-testing.umd.js',
+          '@angular/http/testing': 'npm:@angular/http@2.4.1/bundles/http-testing.umd.js',
+          '@angular/router/testing': 'npm:@angular/router@2.4.1/bundles/router-testing.umd.js',
+
+
+          'rxjs': 'npm:rxjs',
+
+          'angular2-google-maps/core': 'npm:angular2-google-maps/core/core.umd.js'
+      },
+      //packages defines our app package
+      packages: {
+          'app': {
+              main: 'main',
+              defaultExtension: 'ts'
+          },
+          'rxjs': {
+              defaultExtension: 'js'
+          }
+      }
+    });
+
+    System.import('./app/main.ts');
+  </script>
+</head>
+
+<body>
+  <fisher-insurance></fisher-insurance>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+
+    <!-- 
+        map: {
         'rxjs': 'https://unpkg.com/rxjs@5.0.0-beta.12',
         '@angular/core': 'https://unpkg.com/@angular/core@2.0.0',
         '@angular/common': 'https://unpkg.com/@angular/common@2.0.0',
@@ -23,7 +82,8 @@
         '@angular/platform-browser-dynamic': 'https://unpkg.com/@angular/platform-browser-dynamic@2.0.0',
         '@angular/http': 'https://unpkg.com/@angular/http@2.0.0',
         '@angular/forms': 'https://unpkg.com/@angular/forms@2.0.0',
-        '@angular/router': 'https://unpkg.com/@angular/router@3.0.0'
+        '@angular/router': 'https://unpkg.com/@angular/router@3.0.0',
+        'angular2-google-maps': 'https://unpkg.com/angular2-google-maps@0.17.0/core/core.umd.js'
       },
       packages: {
           'app': {
@@ -56,14 +116,8 @@
           }
       }
     });
-    System.import('./app/main.ts');
-  </script>
-</head>
-
-<body>
-  <fisher-insurance></fisher-insurance>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
+        
+        
+        -->
 
 </html>

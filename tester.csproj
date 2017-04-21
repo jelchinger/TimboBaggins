@@ -6,8 +6,7 @@
 
   <ItemGroup>
     <Content Include="wwwroot\app\components\map\map.component.html" />
-    <Content Include="wwwroot\app\components\map\map.component.ts" />
-    <Content Include="wwwroot\app\components\map\test.component.ts">
+    <Content Include="wwwroot\app\components\map\map.component.ts">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
   </ItemGroup>
