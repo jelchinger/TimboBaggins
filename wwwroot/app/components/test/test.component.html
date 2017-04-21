@@ -1,0 +1,105 @@
+<!--<h1>Hello, world!</h1>
+<p>Welcome to your new single-page application, built with:</p>
+<ul>
+    <li><a href='https://get.asp.net/'>ASP.NET Core</a> and <a href='https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx'>C#</a> for cross-platform server-side code</li>
+    <li><a href='https://angular.io/'>Angular 2</a> and <a href='http://www.typescriptlang.org/'>TypeScript</a> for client-side code</li>
+    <li><a href='https://webpack.github.io/'>Webpack</a> for building and bundling client-side resources</li>
+    <li><a href='http://getbootstrap.com/'>Bootstrap</a> for layout and styling</li>
+</ul>
+<p>To help you get started, we've also set up:</p>
+<ul>
+    <li><strong>Client-side navigation</strong>. For example, click <em>Counter</em> then <em>Back</em> to return here.</li>
+    <li><strong>Server-side prerendering</strong>. For faster initial loading and improved SEO, your Angular 2 app is prerendered on the server. The resulting HTML is then transferred to the browser where a client-side copy of the app takes over.</li>
+    <li><strong>Webpack dev middleware</strong>. In development mode, there's no need to run the <code>webpack</code> build tool. Your client-side resources are dynamically built on demand. Updates are available as soon as you modify any file.</li>
+    <li><strong>Hot module replacement</strong>. In development mode, you don't even need to reload the page after making most changes. Within seconds of saving changes to files, your Angular 2 app will be rebuilt and a new instance injected is into the page.</li>
+    <li><strong>Efficient production builds</strong>. In production mode, development-time features are disabled, and the <code>webpack</code> build tool produces minified static CSS and JavaScript files.</li>
+</ul>-->
+
+<style>
+    #map {
+        height: 400px;
+        width: 50%;
+    }
+</style>
+
+<script data-require="jquery@3.2.0" data-semver="3.0.0" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $('div.deleter').hide();
+
+        $('button.duplicate').on('click', function(){
+            $('div.deleter').show();
+            $('div.geolocator').hide();
+        });
+
+        $('button.geolocator').on('click', function(){
+            $('div.deleter').hide();
+            $('div.geolocator').show();
+        });
+    });
+</script>
+<script>
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+</script>
+<div clas="col-md-6">
+</div>
+<div class="btn-group-vertical col-md-3" role="group" aria-label="..." style="padding-top: 80px;">
+    <button type="button" class="btn btn-default duplicate">Duplicate Deleter</button>
+    <button type="button" class="btn btn-default geolocator">Photo Geolocator</button>
+</div>
+<div class="deleter" style="padding-top: 80px;">
+    <form class=" col-md-6 ">
+        <div class="row form-group col-md-12">
+            <label for="fileType">
+                File Type
+                <select class="form-control col-md-12">
+                    <option>Mp3</option>
+                    <option>Jpg</option>
+                    <option>pdf</option>
+                    <option>docx</option>
+                    <option>Other</option>
+                </select>
+            </label>
+        </div>
+        <div class="row form-group col-md-12">
+            <label for="exampleInputFile">Upload Folder</label>
+            
+            <p class="help-block" style="color:red;">Make sure each file in the folder has the same extension.</p>
+        </div>
+        <div class="row form-group col-md-6">
+            <button type="button" class="btn btn-danger btn-lg">Delete Duplicates</button>
+        </div>
+    </form>
+
+</div>
+<div class="col-md-12 geolocator" style="padding-top: 40px;">
+    <div class="row form-group col-md-12">
+        <label for="exampleInputFile">Upload Folder</label>
+        <!--<input type="file" #fileInput webkitdirectory directory multiple />
+        <button class="btn btn-primary btn-lg col-xs-3" on-click="addFile()">Run Test</button>-->
+        <input type="file" #fileInput webkitdirectory directory multiple />
+        <button class="btn btn-primary btn-lg col-xs-3" (click)="addFile()">Run Test</button>
+    </div>
+    <div class="list-group col-md-6">
+        <a href="#" class="list-group-item disabled">All Cities</a>
+        <a href="#" class="list-group-item">Columbus</a>
+        <a href="#" class="list-group-item">Cleveland</a>
+        <a href="#" class="list-group-item">Canton</a>
+        <a href="#" class="list-group-item">Cincinatti</a>
+        <a href="#" class="list-group-item">Euclid</a>
+        <a href="#" class="list-group-item">Clintonville</a>
+    </div>
+    <div id="map"></div>
+</div>
